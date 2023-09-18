@@ -1,5 +1,4 @@
-<a name="readme-top"></a>
-# 📖 [Vet clinic](#vet-clinic)
+<a name="#readme-top"></a>
 
 # 📗 Table of Contents
 
@@ -25,7 +24,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [your_project_name] <a name="about-project"></a>
+# 📖 [Vet Clinic](#vet-clinic) <a name="about-project"></a>
 
 The vet clinic project is an application to manage veterinarian clinics. The application allows the database administrators and other backend users to perform basics operations like, register or delete an animal and/or list all the animals based on set conditions. The App allows the clinic's clients to book, recshedule and cancel an appointment. 
 
