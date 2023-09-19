@@ -120,3 +120,67 @@ SELECT SPECIES, MAX(WEIGHT_KG), MIN(WEIGHT_KG) FROM ANIMALS GROUP BY SPECIES;
 
 /* What is the average number of escape attempts per animal type of those born between 1990 and 2000? */
 SELECT SPECIES, AVG(ESCAPE_ATTEMPTS) FROM ANIMALS WHERE DATE_OF_BIRTH BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY SPECIES;
+
+
+/* 
+  vet_clinic Project3: Query multiple tables
+  Write queries (using JOIN) to answer the following questions: 
+  
+*/
+/* What animals belong to Melody Pond? */
+SELECT * FROM animals WHERE owner_id = 4;
+SELECT a.name, a.date_of_birth, o.full_name AS owner, s.name AS specy
+FROM animals AS a
+LEFT JOIN owners AS o
+ON a.owner_id = o.id
+LEFT JOIN species AS s
+ON a.specy_id = s.id
+WHERE o.full_name = 'Melody Pond'; 
+
+/* List of all animals that are pokemon (their type is Pokemon). */
+SELECT * FROM animals WHERE specy_id = 2;
+SELECT a.name, a.date_of_birth, s.name as specy
+FROM animals as a
+INNER JOIN species as s
+ON a.specy_id = s.id
+WHERE s.name = 'Pokemon';
+
+/* List all owners and their animals, remember to include those that don't own any animal. */
+SELECT o.full_name, a.name, a.date_of_birth, s.name as specy
+FROM owners AS o
+LEFT JOIN animals AS a
+ON a.owner_id = o.id
+LEFT JOIN species as s
+ON a.specy_id = s.id;
+
+/* How many animals are there per species? */
+SELECT COUNT(*) as number, s.name as specy 
+FROM animals
+INNER JOIN species as s
+ON animals.specy_id = s.id
+GROUP BY s.name;
+
+/* List all Digimon owned by Jennifer Orwell. */
+SELECT a.name, a.date_of_birth, s.name AS specy, o.full_name AS owner
+FROM animals As a
+LEFT JOIN species AS s
+ON a.specy_id = s.id
+LEFT JOIN owners as o
+ON a.owner_id = o.id
+WHERE o.full_name = 'Jennifer Orwell' AND s.name = 'Digimon';
+
+/* List all animals owned by Dean Winchester that haven\'t tried to escape. */
+SELECT a.name, a.date_of_birth, a.escape_attempts, o.full_name
+FROM animals AS a
+LEFT JOIN owners AS o
+ON a.owner_id = o.id
+WHERE a.escape_attempts = 0 AND o.full_name = 'Dean Winchester';
+
+/* Who owns the most animals? */
+SELECT o.full_name, COUNT(a.name) AS animal_count
+FROM owners AS o
+LEFT JOIN animals AS a
+ON o.id = a.owner_id
+GROUP BY o.id
+ORDER BY animal_count desc
+LIMIT 1;
