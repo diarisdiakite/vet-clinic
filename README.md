@@ -137,8 +137,6 @@ You can deploy the to-do list application using: google cloud, Microsoft Azure, 
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
-
 👤 Didy
 
 GitHub: [@Didy](github.com/diarisdiakite)
@@ -153,8 +151,6 @@ GitHub: [@Didy](github.com/diarisdiakite)
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
-
-> Describe 1 - 3 features you will add to the project.
 
 - [ ] **[online_payment]**
 - [ ] **[ambulance_booking]**
