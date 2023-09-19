@@ -1,43 +1,4 @@
-# curriculum-databases-projects-template
-
-> This template should be used for database related projects at Microverse.
-> Generate your own repository, update this README and edit all files content while working on projects. You should not be adding any new files unless asked otherwise.
-
-
-## Getting Started
-
-This repository includes files with plain SQL that can be used to recreate a database:
-
-- Use [schema.sql](./schema.sql) to create all tables.
-- Use [data.sql](./data.sql) to populate tables with sample data.
-- Check [queries.sql](./queries.sql) for examples of queries that can be run on a newly created database. **Important note: this file might include queries that make changes in the database (e.g., remove records). Use them responsibly!**
-
-<a name="readme-top"></a>
-
-<!--
-HOW TO USE:
-This is an example of how you may give instructions on setting up your project locally.
-
-Modify this file to match your project and remove sections that don't apply.
-
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
-
-After you're finished please remove all the comments and instructions!
--->
-
-
-<!-- TABLE OF CONTENTS -->
+<a name="#readme-top"></a>
 
 # 📗 Table of Contents
 
@@ -63,17 +24,15 @@ After you're finished please remove all the comments and instructions!
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [your_project_name] <a name="about-project"></a>
+# 📖 [Vet Clinic](#vet-clinic) <a name="about-project"></a>
 
-> Describe your project in 1 or 2 sentences.
-
-**[your_project__name]** is a...
+The vet clinic project is an application to manage veterinarian clinics. The application allows the database administrators and other backend users to perform basics operations like, register or delete an animal and/or list all the animals based on set conditions. The App allows the clinic's clients to book, recshedule and cancel an appointment. 
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-> Describe the tech stack and include only the relevant sections that apply to your project.
+The following technologies have been used for the project development.
 
 <details>
   <summary>Client</summary>
@@ -85,7 +44,7 @@ After you're finished please remove all the comments and instructions!
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
+    <li><a href="https://expressjs.com/">Rails.js</a></li>
   </ul>
 </details>
 
@@ -100,11 +59,13 @@ After you're finished please remove all the comments and instructions!
 
 ### Key Features <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
+The key features of the application are:
 
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+- **[Register_animals]**
+- **[Delete_animal_registration]**
+- **[List_all_registered_animals]**
+- **[Book_appointment]**
+- **[Cancel_appointment]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -112,9 +73,7 @@ After you're finished please remove all the comments and instructions!
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> Add a link to your deployed project.
-
-- [Live Demo Link](<replace-with-your-deployment-URL>)
+- [Live Demo Link]() (Coming soomn)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -122,83 +81,55 @@ After you're finished please remove all the comments and instructions!
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
-
 To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
 In order to run this project you need:
 
-<!--
-Example command:
-
 ```sh
  gem install rails
 ```
- -->
 
 ### Setup
 
 Clone this repository to your desired folder:
 
-<!--
-Example commands:
-
 ```sh
   cd my-folder
-  git clone git@github.com:myaccount/my-project.git
+  git clone git@github.com:diarisdiakite/vet_clinic.git
 ```
---->
+
 
 ### Install
 
 Install this project with:
 
-<!--
-Example command:
-
 ```sh
-  cd my-project
+  cd vet_clinic
   gem install
 ```
---->
+
 
 ### Usage
 
 To run the project, execute the following command:
 
-<!--
-Example command:
-
 ```sh
   rails server
 ```
---->
 
 ### Run tests
 
 To run tests, run the following command:
 
-<!--
-Example command:
-
 ```sh
-  bin/rails test test/models/article_test.rb
+  bin/rails test test/models/animals_test.rb
 ```
---->
 
 ### Deployment
 
-You can deploy this project using:
-
-<!--
-Example:
-
-```sh
-
-```
- -->
+You can deploy the to-do list application using: google cloud, Microsoft Azure, Netlify, github, render and other platform by giving credit on using our template and/or contribute via pull requests (read more in the contributing section).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -208,17 +139,14 @@ Example:
 
 > Mention all of the collaborators of this project.
 
-👤 **Author1**
+👤 Didy
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+GitHub: [@Didy](github.com/diarisdiakite)
+<br> Twitter: [@diarisdiakite](https://www.twitter.com/diarisd)
+<br>LinkedIn: [@diarisdiakite](https://www.linkedin.com/in/diariatou-diakite-67ab80165/)
+<br><br>
 
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+[`Back to top`](#readme-top)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -228,9 +156,8 @@ Example:
 
 > Describe 1 - 3 features you will add to the project.
 
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
+- [ ] **[online_payment]**
+- [ ] **[ambulance_booking]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -240,7 +167,7 @@ Example:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/diarisdiakite/vet-clinic/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -248,9 +175,7 @@ Feel free to check the [issues page](../../issues/).
 
 ## ⭐️ Show your support <a name="support"></a>
 
-> Write a message to encourage readers to support your project
-
-If you like this project...
+If you like the [vet clinic]() project, you can support our work. Please, visit [my personal page](https://diarisdiakite.github.io/my-portfolio/), follow me on [@linkedin.com/diarisd](https://www.linkedin.com/in/diariatou-diakite-67ab80165/) and [@twitter.com/diarisd]().
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -258,9 +183,7 @@ If you like this project...
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-> Give credit to everyone who inspired your codebase.
-
-I would like to thank...
+I would like to thank the Microverse community to inspire and encourage everyday programmers and aspiring programmers.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -268,15 +191,19 @@ I would like to thank...
 
 ## ❓ FAQ <a name="faq"></a>
 
-> Add at least 2 questions new developers would ask when they decide to use your project.
+Here are the most common questions about this project.
 
-- **[Question_1]**
+### `Can we use the application as an organization`
 
-  - [Answer_1]
+### `Answer`
+Yes! Make sure you give us credit of the application. 
 
-- **[Question_2]**
+## `Where can we reach out to you ?`
 
-  - [Answer_2]
+### `Answer`
+You can reach out to the organisation team by email [diarisdiakite@gmail.com](diarisdiakite@gmail.com). 
+
+[`Back to top`](#readme-top)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -285,7 +212,5 @@ I would like to thank...
 ## 📝 License <a name="license"></a>
 
 This project is [MIT](./LICENSE) licensed.
-
-_NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
