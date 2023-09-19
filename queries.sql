@@ -34,12 +34,21 @@ SELECT * FROM ANIMALS WHERE WEIGHT_KG BETWEEN 10.4 AND 17.3;
 
 */
 
-/* Update the animals table by setting the species column to unspecified. Verify that change was made. Then rolled back the change and verified that the species columns went back to the state before the transaction. */
+/* 
+  Here is the Transaction added to update the weight_kg of animals. 
+  BEGIN;
+  UPDATE ANIMALS SET WEIGHT_KG = WEIGHT_KG * (-1) WHERE NAME IN('Charmander', 'Plantmon', 'Squirtle', 'Angemon');
+  SELECT * FROM ANIMALS;
+  COMMIT;
+  SELECT * FROM ANIMALS;
+*/
 
+/* Update the animals table by setting the species column to unspecified. Verify that change was made. Then rolled back the change and verified that the species columns went back to the state before the transaction. */
 BEGIN;
 UPDATE ANIMALS SET SPECIES = 'unspecified';
 SELECT * FROM ANIMALS;
 ROLLBACK;
+SELECT * FROM ANIMALS;
 
 /* Inside a transaction:
 Update the animals table by setting the species column to digimon for all animals that have a name ending in mon.
@@ -52,6 +61,7 @@ UPDATE ANIMALS SET SPECIES = 'digimon' WHERE NAME LIKE '%mon';
 UPDATE ANIMALS SET SPECIES = 'pokemon' WHERE SPECIES IS NULL OR SPECIES = '';
 SELECT * FROM ANIMALS;
 COMMIT;
+SELECT * FROM ANIMALS;
 
 /* 
   Inside a transaction delete all records in the animals table, 

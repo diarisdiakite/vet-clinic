@@ -10,3 +10,6 @@ CREATE TABLE animals (
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
  	modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ;
+
+/* Add species column to the animals table */
+ALTER TABLE ANIMALS ADD SPECIES VARCHAR(50);
