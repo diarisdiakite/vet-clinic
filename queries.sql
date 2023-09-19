@@ -27,3 +27,64 @@ SELECT * FROM ANIMALS WHERE NAME != 'Gabumon';
 */
 SELECT * FROM ANIMALS WHERE WEIGHT_KG BETWEEN 10.4 AND 17.3;
 
+
+/* 
+
+  transactions 
+
+*/
+
+/* Update the animals table by setting the species column to unspecified. Verify that change was made. Then rolled back the change and verified that the species columns went back to the state before the transaction. */
+
+BEGIN;
+UPDATE ANIMALS SET SPECIES = 'unspecified';
+SELECT * FROM ANIMALS;
+ROLLBACK;
+
+/* Inside a transaction:
+Update the animals table by setting the species column to digimon for all animals that have a name ending in mon.
+Update the animals table by setting the species column to pokemon for all animals that don't have species already set.
+Verify that changes were made.
+Commit the transaction. */
+
+BEGIN;
+UPDATE ANIMALS SET SPECIES = 'digimon' WHERE NAME LIKE '%mon';
+UPDATE ANIMALS SET SPECIES = 'pokemon' WHERE SPECIES IS NULL OR SPECIES = '';
+SELECT * FROM ANIMALS;
+COMMIT;
+
+/* 
+  Inside a transaction delete all records in the animals table, 
+  then roll back the transaction. 
+  After the rollback verify if all records in the animals table still exists.
+  Take a screenshot of the results of your actions.
+*/
+
+BEGIN;
+DELETE FROM ANIMALS;
+SELECT * FROM ANIMALS;
+ROLLBACK;
+SELECT * FROM ANIMALS;
+
+/* 
+  Inside a transaction:
+  Delete all animals born after Jan 1st, 2022.
+  Create a savepoint for the transaction.
+  Update all animals' weight to be their weight multiplied by -1.
+  Rollback to the savepoint
+  Update all animals' weights that are negative to be their weight multiplied by -1.
+  Commit transaction
+  Take a screenshot of the results of your actions. 
+*/
+
+BEGIN;
+DELETE FROM ANIMALS WHERE DATE_OF_BIRTH > '2022-01-01';
+SELECT * FROM ANIMALS;
+SAVEPOINT born_after_2022_01_01;
+UPDATE ANIMALS SET WEIGHT_KG = WEIGHT_KG * (-1);
+SELECT * FROM ANIMALS;
+ROLLBACK TO born_after_2022_01_01;
+SELECT * FROM ANIMALS;
+UPDATE ANIMALS SET WEIGHT_KG = WEIGHT_KG * (-1) WHERE WEIGHT_KG < 0;
+COMMIT;
+SELECT * FROM ANIMALS;
