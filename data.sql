@@ -36,3 +36,20 @@ VALUES
 INSERT INTO species (name) Values
 ('Pokemon'),
 ('Digimon');
+
+/* Modify thr inserted animals so it includes the species_id value:
+If the name ends in "mon" it will be Digimon
+All other animals are Pokemon */
+BEGIN;
+UPDATE animals SET specy_id = 2 WHERE name LIKE '%mon';
+UPDATE animals SET specy_id = 1 WHERE specy_id IS NULL;
+SELECT * FROM animals;
+COMMIT;
+
+/* Modify the inserted animals to include owner information (owner_id): */
+
+UPDATE animals SET owner_id = 1 WHERE name = 'Agumon';
+UPDATE animals SET owner_id = 2 WHERE name IN ('Gabumon', 'Pikachu');
+UPDATE animals SET owner_id = 3 WHERE name IN ('Devimon', 'Plantmon');
+UPDATE animals SET owner_id = 4 WHERE name IN ('Charmander', 'Squirtle', 'Blossom');
+UPDATE animals SET owner_id = 5 WHERE name IN ('Angemon', 'Boarmon');
