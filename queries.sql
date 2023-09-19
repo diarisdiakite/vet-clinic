@@ -128,7 +128,6 @@ SELECT SPECIES, AVG(ESCAPE_ATTEMPTS) FROM ANIMALS WHERE DATE_OF_BIRTH BETWEEN '1
   
 */
 /* What animals belong to Melody Pond? */
-SELECT * FROM animals WHERE owner_id = 4;
 SELECT a.name, a.date_of_birth, o.full_name AS owner, s.name AS specy
 FROM animals AS a
 LEFT JOIN owners AS o
@@ -138,7 +137,6 @@ ON a.specy_id = s.id
 WHERE o.full_name = 'Melody Pond'; 
 
 /* List of all animals that are pokemon (their type is Pokemon). */
-SELECT * FROM animals WHERE specy_id = 2;
 SELECT a.name, a.date_of_birth, s.name as specy
 FROM animals as a
 INNER JOIN species as s
