@@ -49,3 +49,38 @@ ALTER TABLE animals
 ADD COLUMN owner_id INTEGER,
 ADD CONSTRAINT fk_owners_id FOREIGN KEY (owners_id) REFERENCES owners(id);
 
+
+/* 
+
+  Many to many relationships 
+  Create a table named vets
+
+*/
+
+CREATE TABLE vets (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  age INTEGER,
+  date_of_graduation TIMESTAMP,
+  created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+/* Create a "join table" called specializations to handle this relationship. */
+
+CREATE TABLE specializations (
+  vet_id INTEGER REFERENCES vets(id),
+  specy_id  INTEGER REFERENCES species(id)
+);
+
+
+/* Create a "join table" called visits to handle this relationship, 
+it should also keep track of the date of the visit. */
+
+CREATE TABLE visits (
+  animal_id INTEGER REFERENCES animals(id),
+  vet_id INTEGER REFERENCES vets(id),
+  date_of_visit TIMESTAMP
+);
+
