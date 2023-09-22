@@ -84,3 +84,11 @@ CREATE TABLE visits (
   date_of_visit TIMESTAMP
 );
 
+
+/* 
+  PERFORMANCE AUDIT
+*/
+
+-- Add an email column to your owners table
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
