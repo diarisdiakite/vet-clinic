@@ -290,3 +290,16 @@ WHERE vt.name = 'Maisy Smith'
 GROUP BY s.name
 ORDER BY specy_visited DESC
 LIMIT 1;
+
+
+-- Perfqct queries part
+
+  -- added indexes to the tables to improve performance
+  CREATE INDEX idx_visits_vet_id ON visits (vet_id);
+
+  -- added indexes to the tables to improve performance
+  CREATE INDEX idx_visits_animal_id ON visits (animal_id);
+
+  -- added indexes to the tables to improve performance
+  CREATE INDEX idx_animals_owner_id ON animals (email);
+
