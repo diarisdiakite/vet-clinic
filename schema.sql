@@ -42,12 +42,12 @@ ALTER TABLE animals DROP COLUMN species;
 
 ALTER TABLE animals
 ADD COLUMN species_id INTEGER, 
-ADD CONSTRAINT fk_species_id FOREIGN KEY (species_id) REFERENCES species(id);
+ADD CONSTRAINT fk_species_id FOREIGN KEY (specy_id) REFERENCES species(id);
 
 
 ALTER TABLE animals 
 ADD COLUMN owner_id INTEGER,
-ADD CONSTRAINT fk_owners_id FOREIGN KEY (owners_id) REFERENCES owners(id);
+ADD CONSTRAINT fk_owners_id FOREIGN KEY (owner_id) REFERENCES owners(id);
 
 
 /* 
@@ -92,3 +92,22 @@ CREATE TABLE visits (
 -- Add an email column to your owners table
 ALTER TABLE owners ADD COLUMN email VARCHAR(120);
 
+/* 
+  First Normal form 
+*/
+
+/* Add a primary key to the tables which don't have one */
+ALTER TABLE visits
+ADD PRIMARY KEY (animal_id, vet_id);
+
+ALTER TABLE visits
+ADD COLUMN id SERIAL PRIMARY KEY
+
+ALTER TABLE specializations
+ADD PRIMARY KEY (vet_id, specy_id);
+
+ALTER TABLE specializations
+ADD COLUMN id SERIAL PRIMARY KEY;
+
+
+/* Put the Data in its most reduced form */

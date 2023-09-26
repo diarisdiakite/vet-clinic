@@ -301,5 +301,9 @@ LIMIT 1;
   CREATE INDEX idx_visits_animal_id ON visits (animal_id);
 
   -- added indexes to the tables to improve performance
+  CREATE INDEX idx_date_of_visit ON visits (date_of_visit);
+
+  -- added indexes to the tables to improve performance
   CREATE INDEX idx_animals_owner_id ON animals (email);
+  
 
