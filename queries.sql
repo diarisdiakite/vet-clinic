@@ -292,6 +292,18 @@ ORDER BY specy_visited DESC
 LIMIT 1;
 
 
+/* 
+First Normal Form
+- Add a Primary Key in the table. (primary keys added)
+- Put the Data in its most reduced form. Example, avoid fields like ContactPersonAndRole
+- Eliminate repeating groups of columns in the table - example: (Project1_ID, Project1_FeedBack) and (Project2_ID, Project2_Feedback). 
+2nd Normal Form
+- Ensure that all the columns in the table relate directly to the primary key of the record in the table.
+3rd Normal Form
+- Ensure that each column must be non-transitively dependent on the primary key of the table. 
+This means that all columns in a table should rely only on the primary key and no other column
+ */
+
 -- Perfqct queries part
 
   -- added indexes to the tables to improve performance
@@ -305,5 +317,55 @@ LIMIT 1;
 
   -- added indexes to the tables to improve performance
   CREATE INDEX idx_animals_owner_id ON animals (email);
-  
 
+
+/* Visits table */
+/* Delete all duplicate entry */
+
+VACUUM FULL visits;
+
+BEGIN;
+CREATE TEMPORARY TABLE duplicates AS
+SELECT animal_id, vet_id, date_of_visit, MIN(id) AS keep_id
+FROM visits
+GROUP BY animal_id, vet_id, date_of_visit
+HAVING COUNT(*) > 1;
+CREATE INDEX duplicate_records_index ON duplicates (animal_id, vet_id, date_of_visit, keep_id);
+COMMIT;
+
+BEGIN;
+DELETE FROM visits
+WHERE (animal_id, vet_id, date_of_visit) IN (
+  SELECT animal_id, vet_id, date_of_visit
+  FROM duplicates
+  WHERE id != keep_id
+);
+SAVEPOINT find_duplicate_entries;
+COMMIT;
+
+DROP TABLE duplicates;
+COMMIT;
+
+VACUUM FULL visits;
+
+EXPLAIN ANALYZE SELECT * FROM visits WHERE animal_id = 4;
+
+EXPLAIN ANALYZE SELECT * FROM visits WHERE vet_id = 2;
+
+
+
+/* owners table */
+BEGIN;
+CREATE TEMPORARY TABLE duplicates_owners_to_keep AS
+SELECT
+  MIN(id) AS keep_id
+FROM owners
+GROUP BY full_name, age, email
+HAVING COUNT(*) > 1;
+CREATE INDEX duplicates_to_keep_index ON duplicates_owners_to_keep (keep_id);
+COMMIT;
+  
+/* query to delete duplicate owners not applied */
+DELETE FROM visits
+WHERE id NOT IN (SELECT keep_id FROM duplicates_owners_to_keep);
+COMMIT;
