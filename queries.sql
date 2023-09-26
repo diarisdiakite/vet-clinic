@@ -366,6 +366,6 @@ CREATE INDEX duplicates_to_keep_index ON duplicates_owners_to_keep (keep_id);
 COMMIT;
   
 /* query to delete duplicate owners not applied */
-DELETE FROM visits
+DELETE FROM owners
 WHERE id NOT IN (SELECT keep_id FROM duplicates_owners_to_keep);
 COMMIT;
